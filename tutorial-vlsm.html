@@ -1758,39 +1758,78 @@ Default Gateway: <span class="comment">(lasciare vuoto)</span>
         </p>
     </div>
 
-    <div class="exercise-box">
+   <div class="exercise-box">
         <h4>📝 Domande di verifica</h4>
         <ol>
             <li>
                 Spiega con parole tue la differenza tra FLSM e VLSM. 
                 Perché il VLSM è considerato più efficiente?
+                <div class="answer" style="margin-top: 10px; padding: 10px; background-color: rgba(16, 185, 129, 0.1); border-left: 4px solid #10b981; color: #166534; border-radius: 0 4px 4px 0; font-size: 0.95em;">
+                    <strong>Risposta:</strong> FLSM divide una rete in subnet tutte della stessa identica grandezza. VLSM (Variable Length Subnet Mask) permette di creare subnet di dimensioni diverse in base alle reali necessità. È più efficiente perché riduce drasticamente lo spreco di indirizzi IP inutilizzati.
+                </div>
             </li>
-            <li>
+            <li style="margin-top: 15px;">
                 Quanti indirizzi host utilizzabili offre ciascuna delle 4 subnet di questo esercizio? 
                 Mostra il calcolo 2<sup>n</sup> − 2 per ciascuna.
+                <div class="answer" style="margin-top: 10px; padding: 10px; background-color: rgba(16, 185, 129, 0.1); border-left: 4px solid #10b981; color: #166534; border-radius: 0 4px 4px 0; font-size: 0.95em;">
+                    <strong>Risposta:</strong>
+                    <ul style="margin-top: 5px; margin-bottom: 0; padding-left: 20px;">
+                        <li><strong>Rete A (/25):</strong> 7 bit per gli host &rarr; 2<sup>7</sup> − 2 = 128 − 2 = <strong>126 host</strong></li>
+                        <li><strong>Rete B (/26):</strong> 6 bit per gli host &rarr; 2<sup>6</sup> − 2 = 64 − 2 = <strong>62 host</strong></li>
+                        <li><strong>Rete C (/27):</strong> 5 bit per gli host &rarr; 2<sup>5</sup> − 2 = 32 − 2 = <strong>30 host</strong></li>
+                        <li><strong>Rete D (/28):</strong> 4 bit per gli host &rarr; 2<sup>4</sup> − 2 = 16 − 2 = <strong>14 host</strong></li>
+                    </ul>
+                </div>
             </li>
-            <li>
+            <li style="margin-top: 15px;">
                 Qual è l'operazione logica che il PC esegue per determinare se un indirizzo 
                 di destinazione è nella propria subnet? Fai un esempio con valori concreti.
+                <div class="answer" style="margin-top: 10px; padding: 10px; background-color: rgba(16, 185, 129, 0.1); border-left: 4px solid #10b981; color: #166534; border-radius: 0 4px 4px 0; font-size: 0.95em;">
+                    <strong>Risposta:</strong> Esegue un'operazione di <strong>AND logico</strong> (bit a bit) tra l'IP di destinazione e la propria Subnet Mask. <br>
+                    <em>Esempio:</em> Se PC-A1 (192.168.0.1/25) vuole contattare PC-B1 (192.168.0.129), calcola: <code>192.168.0.129 AND 255.255.255.128 = 192.168.0.128</code>. Poiché il risultato è diverso dalla propria rete di base (192.168.0.0), il PC sa che la destinazione è in un'altra subnet.
+                </div>
             </li>
-            <li>
+            <li style="margin-top: 15px;">
                 Nella Simulation Mode, quale campo del pacchetto IPv4 ti permette di capire 
                 che si tratta di un pacchetto ICMP? Qual è il suo valore?
+                <div class="answer" style="margin-top: 10px; padding: 10px; background-color: rgba(16, 185, 129, 0.1); border-left: 4px solid #10b981; color: #166534; border-radius: 0 4px 4px 0; font-size: 0.95em;">
+                    <strong>Risposta:</strong> È il campo <strong>Protocol</strong> all'interno dell'header di Livello 3 (IPv4). Il suo valore standard per identificare l'ICMP è <strong>1</strong>.
+                </div>
             </li>
-            <li>
+            <li style="margin-top: 15px;">
                 Qual è la differenza tra un Echo Request (Type 8) e un Echo Reply (Type 0)?
+                <div class="answer" style="margin-top: 10px; padding: 10px; background-color: rgba(16, 185, 129, 0.1); border-left: 4px solid #10b981; color: #166534; border-radius: 0 4px 4px 0; font-size: 0.95em;">
+                    <strong>Risposta:</strong> L'<strong>Echo Request</strong> (Type 8) è il messaggio di andata (la richiesta) inviato da chi lancia il comando Ping. L'<strong>Echo Reply</strong> (Type 0) è il messaggio di ritorno (la risposta) generato dal dispositivo di destinazione per confermare la ricezione.
+                </div>
             </li>
-            <li>
+            <li style="margin-top: 15px;">
                 Cosa succederebbe se aggiungessimo un router alla topologia e configurassimo 
                 un'interfaccia per ogni subnet come default gateway? I PC di subnet diverse 
                 potrebbero comunicare?
+                <div class="answer" style="margin-top: 10px; padding: 10px; background-color: rgba(16, 185, 129, 0.1); border-left: 4px solid #10b981; color: #166534; border-radius: 0 4px 4px 0; font-size: 0.95em;">
+                    <strong>Risposta:</strong> Sì, potrebbero comunicare perfettamente. I PC invierebbero i pacchetti destinati all'esterno al loro Default Gateway (il router), il quale, essendo un apparato di Livello 3, si occuperebbe di instradarli verso la subnet di destinazione corretta.
+                </div>
             </li>
-            <li>
+            <li style="margin-top: 15px;">
                 Dopo la Rete D (<code>192.168.0.224/28</code> che termina con broadcast 
                 <code>192.168.0.239</code>), quanti indirizzi restano ancora disponibili 
                 nel blocco originale <code>192.168.0.0/24</code>? Da quale indirizzo inizierebbero?
+                <div class="answer" style="margin-top: 10px; padding: 10px; background-color: rgba(16, 185, 129, 0.1); border-left: 4px solid #10b981; color: #166534; border-radius: 0 4px 4px 0; font-size: 0.95em;">
+                    <strong>Risposta:</strong> Restano disponibili esattamente <strong>16 indirizzi</strong> (sufficienti per un'altra subnet /28). Il blocco inizia dall'indirizzo di rete <strong>192.168.0.240</strong> e termina con l'indirizzo di broadcast <strong>192.168.0.255</strong>.
+                </div>
             </li>
         </ol>
+    </div>
+
+    <div class="exercise-box" style="border-color: rgba(124,58,237,0.3); background: linear-gradient(135deg, rgba(124,58,237,0.05) 0%, rgba(37,99,235,0.05) 100%); margin-top: 20px;">
+        <h4 style="color: var(--accent-purple);">🚀 Sfida extra</h4>
+        <p>
+            Aggiungi un <strong>Router 2911</strong> alla topologia e collegalo allo switch. 
+            Configura 4 sotto-interfacce (sub-interfaces) sul router, una per ciascuna subnet, 
+            assegnando a ciascuna il primo indirizzo host disponibile come gateway. 
+            Configura il default gateway su ogni PC. Verifica che ora i PC di subnet diverse 
+            possano comunicare tra loro.
+        </p>
     </div>
 
     <div class="exercise-box" style="border-color: rgba(124,58,237,0.3); background: linear-gradient(135deg, rgba(124,58,237,0.05) 0%, rgba(37,99,235,0.05) 100%);">
